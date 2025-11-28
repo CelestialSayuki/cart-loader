@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractMinecartEntity.class)
 public abstract class CartLoaderMixin {
 
-    final ChunkTicketType minecartChunkTicketType = ChunkTicketType.create("minecart", 1200);
+    final ChunkTicketType<Integer> minecartChunkTicketType = ChunkTicketType.create("minecart", Integer::compareTo, 1200L);
     public ChunkPos chunkPos, oldChunkPos;
     public int minecartId;
     @Inject(at = @At("RETURN"), method = "moveOnRail")
