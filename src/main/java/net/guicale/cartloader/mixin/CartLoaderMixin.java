@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractMinecartEntity.class)
 public abstract class CartLoaderMixin {
 
-    final ChunkTicketType<Integer> minecartChunkTicketType = ChunkTicketType.create("minecart", Integer::compareTo, 1200);
+    final ChunkTicketType minecartChunkTicketType = ChunkTicketType.create("minecart", Integer::compareTo, 1200);
     public ChunkPos chunkPos, oldChunkPos;
     public int minecartId;
     @Inject(at = @At("RETURN"), method = "moveOnRail")
@@ -38,7 +38,7 @@ public abstract class CartLoaderMixin {
             oldChunkPos = chunkPos;
         }
         ServerWorld world = (ServerWorld) ((AbstractMinecartEntity) (Object) this).getEntityWorld();
-        if (world.isClient) {
+        if (world.isClient()) {
             return;
         }
         if (world.getPlayers().isEmpty()) {
