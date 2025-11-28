@@ -37,7 +37,7 @@ public abstract class CartLoaderMixin {
         if (oldChunkPos == null) {
             oldChunkPos = chunkPos;
         }
-        ServerWorld world = (ServerWorld) ((AbstractMinecartEntity) (Object) this).getWorld();
+        ServerWorld world = (ServerWorld) ((AbstractMinecartEntity) (Object) this).getEntityWorld();
         if (world.isClient) {
             return;
         }
